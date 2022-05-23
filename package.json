@@ -1,0 +1,24 @@
+{
+  "name": "mysql_viewer",
+  "version": "1.0.0",
+  "main": "build/app/app.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.31",
+    "electron": "^18.2.0",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "yarn build && yarn start",
+    "build": "yarn run build:app && yarn run build:web",
+    "build:app": "tsc -p src/tsconfig.json",
+    "build:web": "tsup web/index.ts -d build/ --minify --format iife --target esnext --sourcemap inline --keep-names",
+    "watch:web": "yarn build:web --watch web"
+  },
+  "dependencies": {
+    "@types/mysql": "^2.15.21",
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySQL Viewer</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="drag-container"></div>
+    <div id="control-bar">
+      <span>Quit</span>
+    </div>
+    <div id="main">
+      <div id="nothing-screen" class="screen"></div>
+      <div id="waiting-screen" class="screen">
+        <main class="container">
+          <div class="spinner-border"></div>
+        </main>
+      </div>
+      <div id="main-screen" class="screen screen-active">
+        <main class="container">
+          <hgroup>
+            <h3 style="color: hsl(205, 18%, 86%)">Connection</h3>
+            <h4>Please enter your credentials to access the wanted server.</h4>
+          </hgroup>
+
+          <div class="input-group mb-3">
+            <input
+              id="connect-host"
+              type="text"
+              class="form-control"
+              placeholder="localhost"
+              aria-label="Host"
+            />
+            <span class="input-group-text">@</span>
+            <input
+              id="connect-port"
+              type="number"
+              class="form-control"
+              placeholder="Port"
+              aria-label="Port"
+              value="3306"
+            />
+            <span class="input-group-text">/</span>
+            <input
+              id="connect-database"
+              type="text"
+              class="form-control"
+              placeholder="database"
+              aria-label="Database"
+            />
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <input
+                id="connect-user"
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                aria-label="Username"
+              />
+            </div>
+            <div class="col">
+              <input
+                id="connect-password"
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                aria-label="Password"
+              />
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <input
+              id="connect-submit"
+              type="submit"
+              class="btn btn-primary"
+              disabled
+              value="Login"
+            />
+          </div>
+        </main>
+      </div>
+      <div id="table-screen" class="screen">
+        <main class="container"></main>
+      </div>
+      <div id="viewer-screen" class="screen">
+        <main class="container">
+          <nav class="navbar" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li id="viewer-db" class="breadcrumb-item" style="color: white">
+                &lt;DB&gt;
+              </li>
+              <li
+                id="viewer-table"
+                class="breadcrumb-item active"
+                aria-current="page"
+              >
+                &lt;TABLE&gt;
+              </li>
+            </ol>
+          </nav>
+
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+    
+    </div>
+
+    <script defer src="./build/index.global.js"></script>
+  </body>
+</html>

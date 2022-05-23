@@ -1,0 +1,136 @@
+:root {
+  --drag-bar-thickness: 5%;
+}
+
+* {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #2d2a2e;
+}
+
+.alert {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  visibility: var(--is-visible, hidden);
+  display: var(--screen-display, none);
+}
+
+.screen-active {
+  --is-visible: visible;
+  --screen-display: block;
+}
+
+#drag-container {
+  -webkit-app-region: drag;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--drag-bar-thickness);
+  width: 100%;
+}
+
+#control-bar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+}
+
+#control-bar > span {
+  color: white;
+  text-transform: uppercase;
+  padding: 2px;
+  letter-spacing: 1px;
+}
+
+#control-bar > span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#main-screen.screen > main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#main-screen.screen > main > div > input[type="submit"] {
+  margin: 25px;
+}
+
+#waiting-screen.screen > main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#waiting-screen > main > .spinner-border {
+  width: 5rem;
+  height: 5rem;
+  color: white;
+}
+
+#table-screen > main {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-color: red;
+}
+
+#table-screen > main > .row > div > button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 7rem;
+}
+
+#table-screen > main > .row > div > button:hover {
+  transition: 0.5s;
+  z-index: 10;
+  transform: translateY(-0.25rem);
+}
+
+.screen:not(#main-screen):not(#waiting-screen) > .container {
+  margin-top: calc(var(--drag-bar-thickness) * 1.5);
+}
+
+.breadcrumb-item.active {
+  color: white;
+}
+
+/*
+
+This section (about hgroup tag) was taken from:
+https://github.com/picocss/pico/blob/f9e97c0bf430df8fa3f730eb6a6e84f63d4a9b0c/scss/content/_typography.scss#L148
+
+It is part of the PicoCSS library --> picocss.com
+Licensed under MIT
+
+*/
+hgroup {
+  margin-bottom: 1.5rem;
+}
+hgroup > * {
+  margin-bottom: 0;
+}
+hgroup > *:last-child {
+  color: hsl(205, 10%, 50%);
+  font-weight: unset;
+  font-size: 1rem;
+  font-family: unset;
+}

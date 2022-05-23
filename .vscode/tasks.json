@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "label": "electron",
+      "detail": "yarn build && yarn start"
+    },
+    {
+      "type": "npm",
+      "script": "watch:web",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "watch",
+      "detail": "yarn build:web --watch web"
+    }
+  ]
+}
